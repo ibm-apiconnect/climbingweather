@@ -1,12 +1,12 @@
-product: '1.0.0'
+product: 1.0.0
 
 info:
   name: climbing-weather-product
   title: Climbing Weather Product
-  version: 1.0.0
+  version: 1.1.0
 
 apis:
-  'climbing-weather':
+  climbing-weather:
     $ref: climbing-weather.yaml
 
 visibility:
@@ -16,10 +16,24 @@ visibility:
     type: authenticated
 
 plans:
-  default:
-    title: Default Plan
-    description: Default Plan
+  freemium:
+    title: Freemium Plan
+    description: Freemium Plan description
     approval: false
     rate-limit:
-      value: 100/hour
-      hard-limit: false
+      value: 5/minute
+      hard-limit: true
+    apis:
+      climbing-weather:
+        operations:
+          - operation: get
+            path: /yosemite
+          - operation: get
+            path: /tahoe
+
+  premium:
+    title: Premium Plan
+    description: Premium Plan description
+    approval: false
+    rate-limit:
+      value: unlimited
