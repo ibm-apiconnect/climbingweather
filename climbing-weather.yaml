@@ -22,7 +22,6 @@ securityDefinitions:
     description: ''
     in: header
     name: X-IBM-Client-Id
-
 security:
   - api-key: []
 
