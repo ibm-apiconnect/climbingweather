@@ -1,7 +1,7 @@
 swagger: '2.0'
 
 info:
-  x-ibm-name: climbingweather
+  x-ibm-name: climbing-weather
   title: Climbing Weather
   version: 1.0.0
 
@@ -15,6 +15,16 @@ consumes:
 
 produces:
   - application/json
+
+securityDefinitions:
+  api-key:
+    type: apiKey
+    description: ''
+    in: header
+    name: X-IBM-Client-Id
+
+security:
+  - api-key: []
 
 x-ibm-configuration:
   assembly:
