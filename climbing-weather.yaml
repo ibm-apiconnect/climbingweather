@@ -67,3 +67,94 @@ paths:
       responses:
         '200':
           description: Success
+
+
+definitions:
+
+  ForecastResponse:
+    additionalProperties: false
+    properties:
+      name:
+        type: string
+      url:
+        type: string
+      d:
+        type: string
+      dy:
+        type: string
+      ddame:
+        type: string
+      hi:
+        type: string
+      l:
+        type: string
+      pd:
+        type: string
+      pname:
+        type: string
+      h:
+        type: string
+      r:
+        type: string
+      s:
+        type: string
+      wsame:
+        type: string
+      wg:
+        type: string
+      w:
+        type: string
+      sy:
+        type: string
+      c:
+        type: string
+
+  Forecast:
+    type: object
+    additionalProperties: false
+    properties:
+      status:
+        type: string
+      results:
+        type: object
+        additionalProperties: false
+        properties:
+          n:
+            type: string
+          url:
+            type: string
+          f:
+            type: array
+            items: 
+              type: object
+              properties:
+                d:
+                  type: string
+                dy:
+                  type: string
+                dd:
+                  type: string
+                hi:
+                  type: string
+                l:
+                  type: string
+                pd:
+                  type: string
+                pn:
+                  type: string
+                h:
+                  type: string
+                r:
+                  type: string
+                s:
+                  type: string
+                ws:
+                  type: string
+                wg:
+                  type: string
+                w:
+                  type: string
+                sy:
+                  type: string
+                c:
+                  type: string

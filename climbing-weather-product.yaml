@@ -3,7 +3,7 @@ product: '1.0.0'
 info:
   name: climbing-weather-product
   title: Climbing Weather Product
-  version: 1.0.0
+  version: 2.0.0
 
 apis:
   'climbing-weather':
@@ -16,10 +16,32 @@ visibility:
     type: authenticated
 
 plans:
-  default:
-    title: Default Plan
-    description: Default Plan
+
+  bronze:
+    title: Bronze Plan
+    description: Bronze Plan
     approval: false
     rate-limit:
       value: 100/hour
+      hard-limit: true
+    apis:
+      climbing-weather:
+        operations:
+          - operation: get
+            path: /yosemite
+
+  silver:
+    title: Silver Plan
+    description: Silver Plan
+    approval: false
+    rate-limit:
+      value: 1000/hour
+      hard-limit: true
+
+  gold:
+    title: Gold Plan
+    description: Gold Plan
+    approval: false
+    rate-limit:
+      value: 10000/hour
       hard-limit: false
