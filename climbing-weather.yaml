@@ -1,0 +1,60 @@
+swagger: '2.0'
+
+info:
+  x-ibm-name: climbingweather
+  title: Climbing Weather
+  version: 1.0.0
+
+schemes:
+  - https
+
+host: $(catalog.host)
+
+consumes:
+  - application/json
+
+produces:
+  - application/json
+
+x-ibm-configuration:
+  assembly:
+    execute:
+      - operation-switch:
+          title: operation-switch
+          case:
+            - operations:
+                - yosemiteGet
+              execute:
+                - invoke:
+                    target-url: 'http://api.climbingweather.com/api/area/daily/518?apiKey=c9db14bf581e6eab4fceaac87b9125ef&days=2'
+                    title: climbingweather.com Yosemite Invoke
+            - operations:
+                - tahoeGet
+              execute:
+                - invoke:
+                    target-url: 'http://api.climbingweather.com/api/area/daily/516?apiKey=c9db14bf581e6eab4fceaac87b9125ef&days=2'
+                    title: climbingweather.com Tahoe Invoke
+
+paths:
+
+  /yosemite:
+    get:
+      summary: Retrieve Yosemite weather
+      description: Retrieve Yosemite weather description
+      operationId: yosemiteGet
+      tags:
+        - Weather
+      responses:
+        '200':
+          description: Success
+
+  /tahoe:
+    get:
+      summary: Retrieve Tahoe weather
+      description: Retrieve Tahoe weather description
+      operationId: tahoeGet
+      tags:
+        - Weather
+      responses:
+        '200':
+          description: Success
